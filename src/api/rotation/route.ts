@@ -1,7 +1,9 @@
+// "use server";
 import { ChampionRotation } from "@/types/ChampionRotation";
 
+const RIOT_API_KEY: string | undefined = process.env.NEXT_PUBLIC_RIOT_API_KEY;
+
 export async function GET() {
-  const RIOT_API_KEY: string | undefined = process.env.NEXT_PUBLIC_RIOT_API_KEY;
   const res = await fetch(
     "https://kr.api.riotgames.com/lol/platform/v3/champion-rotations",
     {

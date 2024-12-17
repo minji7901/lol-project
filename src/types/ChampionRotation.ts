@@ -6,3 +6,7 @@ export interface ChampionRotation {
   // 신규 플레이어 레벨 한도
   maxNewPlayerLevel: number;
 }
+
+export type RotationChampionList = {
+  [key: string]: number[];
+};

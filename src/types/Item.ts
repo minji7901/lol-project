@@ -1,3 +1,12 @@
+export type GetItem = {
+  type: string;
+  version: string;
+  basic: object;
+  data: {
+    [key: string]: Item;
+  };
+};
+
 export type Item = {
   name: string;
   rune: object;

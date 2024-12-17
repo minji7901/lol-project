@@ -27,8 +27,8 @@ export default function RootLayout({
     <html lang="kr">
       <body className={nanumGothic.className}>
         <Header juaClass={jua.className} />
-        <section className="pt-[72px] h-[calc(100vh-160px)]">
-          <div className="max-w-[1200px] mx-auto pt-10">{children}</div>
+        <section className="my-[72px] h-[calc(100vh-160px)] overflow-auto py-10">
+          <div className="max-w-[1200px] mx-auto">{children}</div>
         </section>
         <Footer />
       </body>
