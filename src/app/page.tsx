@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -13,30 +14,48 @@ export default function Home() {
           rotation.
         </p>
       </div>
-      <div className="grid grid-cols-2 mt-7 gap-5">
+      <div className="flex justify-between mt-7">
         {LINK_NAME.map((item) => (
           <div
             key={item}
-            className={`p-2 rounded-lg bg-[rgba(57,117,142,0.2)] ${
+            className={`p-2 rounded-lg bg-secondly ${
               item === "rotation" ? "col-span-2" : ""
             }`}
+            style={{
+              clipPath:
+                "polygon(10% 0%, 100% 0%, 100% 80%, 90% 100%, -45% 100%)",
+            }}
           >
-            <Link href={`/${item}`}>
-              <p>{item}</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none" 
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+            <Link href={`/${item}`} className="block">
+              <div className="relative group">
+                <img
+                  src={`/images/${item}.jpg`}
+                  alt={item}
+                  className="w-full h-40 object-cover rounded-lg"
+                  style={{
+                    clipPath:
+                      "polygon(10% 0%, 100% 0%, 100% 100%, 100% 100%, -30% 100%)",
+                  }}
                 />
-              </svg>
+              </div>
+              <p className="uppercase mt-5 font-semibold text-center">{item}</p>
+              <div className="flex items-center justify-center gap-2 mt-2 mb-4">
+                <p className="text-sm">Explore Now</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                  />
+                </svg>
+              </div>
             </Link>
           </div>
         ))}
