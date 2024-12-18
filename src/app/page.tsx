@@ -1,15 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   const LINK_NAME = ["items", "champions", "rotation"];
   return (
-    <>
+    <div className="h-full mt-70">
       <div className="text-center">
         <h1 className="text-3xl font-bold">
           Welcome to League Of Legend Info!
         </h1>
-        <p className="mt-2 text-gray-300">
+        <p className="mt-2">
           You can find information about champions, items, and champion
           rotation.
         </p>
@@ -26,7 +25,7 @@ export default function Home() {
               <p>{item}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
+                fill="none" 
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
@@ -42,6 +41,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,12 +1,4 @@
-//챔피언 정보
-export interface GetChampion {
-  type: string;
-  format: string;
-  version: string;
-  data: {
-    [key: string]: Champion;
-  };
-}
+// 챔피언 기본 정보
 export interface Champion {
   version: string;
   id: string;
@@ -15,18 +7,18 @@ export interface Champion {
   title: string;
   blurb: string;
   info: {
-    attack: number; //공격력
-    defense: number; //방어력
-    magic: number; //마법력
-    difficulty: number; //어려움
+    attack: number;
+    defense: number;
+    magic: number;
+    difficulty: number;
   };
   image: ChampionImage;
   tags: string[];
   partype: string;
-  stats: object;
+  stats: Record<string, any>;
 }
 
-//이미지 정보
+// 이미지 정보
 export interface ChampionImage {
   full: string;
   sprite: string;
@@ -37,11 +29,42 @@ export interface ChampionImage {
   h: number;
 }
 
-export interface addImgChampion extends Champion {
-  imgPath: string;
+// 챔피언의 상세 정보
+export interface ChampionDetail extends Champion {
+  skins: {
+    id: string;
+    name: string;
+    chromas: boolean;
+  }[];
+  lore: string;
+  allytips: string[];
+  enemytips: string[];
+  spells: {
+    id: string;
+    name: string;
+    description: string;
+    image: ChampionImage;
+    resource: string;
+  }[];
+  passive: {
+    name: string;
+    description: string;
+    image: ChampionImage;
+  };
+  recommend: any[];
 }
 
-//챔피언 자세정보
+// 챔피언 목록
+export interface GetChampion {
+  type: string;
+  format: string;
+  version: string;
+  data: {
+    [key: string]: Champion;
+  };
+}
+
+// 챔피언 상세 정보 목록
 export interface GetChampionDetail {
   type: string;
   format: string;
@@ -51,22 +74,7 @@ export interface GetChampionDetail {
   };
 }
 
-export interface ChampionDetail extends Champion {
-  skins: object[];
-  lore: string;
-  allytype: string[];
-  enemytip: string[];
-  spells: {
-    id: string;
-    name: string;
-    description: string;
-    image: ChampionImage;
-    resource: string;
-  };
-  passive: {
-    name: string;
-    description: string;
-    image: ChampionImage;
-  };
-  recommend: [];
+// 이미지 경로가 추가된 챔피언 타입
+export interface addImgChampion extends Champion {
+  imgPath: string;
 }

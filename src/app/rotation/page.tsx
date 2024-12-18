@@ -2,8 +2,8 @@
 import ChampionCard from "@/components/Champion/ChampionCard";
 import { addImgChampion } from "@/types/Champion";
 import { useQuery } from "@tanstack/react-query";
-import { Suspense } from "react";
 import Loading from "./loading";
+import Title from "@/components/Title";
 
 export default function RotationPage() {
   const fetchRotationChampions = async () => {
@@ -16,21 +16,21 @@ export default function RotationPage() {
   };
 
   // useQuery 사용
-  const { data: champions } = useQuery<addImgChampion[], Error>({
+  const { data: champions, isPending } = useQuery<addImgChampion[], Error>({
     queryKey: ["rotationChampions"],
     queryFn: fetchRotationChampions,
   });
-
+  if (isPending) {
+    return <Loading />;
+  }
   return (
-    <Suspense fallback={<Loading />}>
-      <div>
-        <h1>Champion Rotation</h1>
-        <div className="grid grid-cols-6 gap-y-5">
-          {champions?.map((champion: addImgChampion) => {
-            return <ChampionCard key={champion.id} champion={champion} />;
-          })}
-        </div>
+    <div className="h-full">
+      <Title>Champion Rotation</Title>
+      <div className="grid grid-cols-2 gap-3 overflow-scroll h-[calc(100%-56px)] pr-3 md:grid-cols-6 md:gap-5">
+        {champions?.map((champion: addImgChampion) => {
+          return <ChampionCard key={champion.id} champion={champion} />;
+        })}
       </div>
-    </Suspense>
+    </div>
   );
 }
