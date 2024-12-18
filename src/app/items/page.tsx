@@ -5,7 +5,6 @@ import { fetchItemList, getVersion } from "@/utils/serverApi";
 
 export default async function ItemPage() {
   const version = await getVersion();
-  console.log(version)
   const data: Item[] = await fetchItemList();
   return (
     <div className="h-full">
