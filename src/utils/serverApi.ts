@@ -6,10 +6,12 @@ import {
   GetChampionDetail,
 } from "@/types/Champion";
 import { GetItem, Item } from "@/types/Item";
+import { delay } from "./delay";
 
 //챔피언 불러올때 쓰일 버전
 export async function getVersion() {
   try {
+    await delay(1000); //1초 지연
     const res = await fetch(
       "https://ddragon.leagueoflegends.com/api/versions.json",
       { cache: "force-cache" }
@@ -31,6 +33,7 @@ export async function getVersion() {
 //챔피언 목록 불러오기 , ISR
 export async function fetchChampionList() {
   try {
+    await delay(1000); //1초 지연
     const version = await getVersion();
     const res = await fetch(`${BASE_URL}/${version}/data/ko_KR/champion.json`, {
       next: {
@@ -60,6 +63,7 @@ export async function fetchChampionList() {
 //챔피언 상세정보 불러오기
 export async function fetchChampionDetail(id: string) {
   try {
+    await delay(1000); //1초 지연
     const version = await getVersion();
     const res = await fetch(
       `${BASE_URL}/${version}/data/ko_KR/champion/${id}.json`,
@@ -84,6 +88,7 @@ export async function fetchChampionDetail(id: string) {
 // 아이템 불러오기
 export async function fetchItemList() {
   try {
+    await delay(1000); //1초 지연
     const version = await getVersion();
     const res = await fetch(`${BASE_URL}/${version}/data/ko_KR/item.json`, {
       cache: "force-cache",
