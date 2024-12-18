@@ -3,16 +3,15 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  if (theme === undefined) {
-    return null;
-  }
   const [mounted, setMounted] = useState(false);
-
+  const { theme, setTheme } = useTheme();
   useEffect(() => {
     // 클라이언트에서만 렌더링하도록 설정
     setMounted(true);
   }, []);
+  if (theme === undefined) {
+    return null;
+  }
 
   // mounted가 false일 때는 아무것도 렌더링하지 않음
   if (!mounted) {
