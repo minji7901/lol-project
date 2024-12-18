@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   const LINK_NAME = ["items", "champions", "rotation"];
   return (
-    <div className="h-full mt-70">
+    <div className="h-full mt-70 overflow-auto">
       <div className="text-center">
         <h1 className="text-3xl font-bold">
           Welcome to League Of Legend Info!
@@ -14,16 +14,18 @@ export default function Home() {
           rotation.
         </p>
       </div>
-      <div className="flex justify-between mt-7">
+      <div className="mt-7 flex justify-between gap-5 flex-col md:flex-row">
         {LINK_NAME.map((item) => (
           <div
             key={item}
-            className={`p-2 rounded-lg bg-secondly ${
+            className={`p-2 rounded-lg ${
               item === "rotation" ? "col-span-2" : ""
-            }`}
+            } 
+    bg-gradient-to-tr from-[#3b82f6] via-[#6366F1] to-[#FBBF24] 
+    bg-[length:400%_400%] animate-gradient-animation
+  `}
             style={{
-              clipPath:
-                "polygon(10% 0%, 100% 0%, 100% 80%, 90% 100%, -45% 100%)",
+              clipPath: "polygon(10% 0%, 100% 0%, 100% 100%, -52% 100%)",
             }}
           >
             <Link href={`/${item}`} className="block">
